@@ -198,8 +198,8 @@
         });
 
         function calculateShippingCost(weight, height, length, width) {
-            const volume = height * length * width;
-            const volumeWeight = volume / 5000;
+            const volume = height * length * width / 1000000;
+            const volumeWeight = volume * 166.67;
             return Math.max(weight, volumeWeight);
         }
 
