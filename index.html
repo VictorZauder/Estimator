@@ -1,239 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shipping Cost Calculator</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background-color: #f4f4f9;
-        }
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 100%;
-        }
-        .container h1 {
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 24px;
-            color: #333;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 8px;
-            font-size: 14px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-        .btn {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            width: 100%;
-        }
-        .btn:hover {
-            background: #0056b3;
-        }
-        .result {
-            margin-top: 15px;
-            font-size: 16px;
-            color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shipping Cost Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f4f4f9;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      width: 100%;
+    }
+    .container h1 {
+      margin-bottom: 20px;
+      text-align: center;
+      font-size: 24px;
+      color: #333;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 8px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      width: 100%;
+    }
+    .btn:hover {
+      background: #0056b3;
+    }
+    .result {
+      margin-top: 15px;
+      font-size: 16px;
+      color: #333;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Shipping Cost Calculator</h1>
-        <div class="form-group">
-            <label for="product_cost">Product Cost (USD):</label>
-            <input type="number" id="product_cost" placeholder="Enter product cost" min="0" required>
-        </div>
-        <div class="form-group">
-            <label for="weight">Weight (kg):</label>
-            <input type="number" id="weight" placeholder="Enter weight" min="0" required>
-        </div>
-        <div class="form-group">
-            <label for="height">Height (cm):</label>
-            <input type="number" id="height" placeholder="Enter height" min="0" required>
-        </div>
-        <div class="form-group">
-            <label for="length">Length (cm):</label>
-            <input type="number" id="length" placeholder="Enter length" min="0" required>
-        </div>
-        <div class="form-group">
-            <label for="width">Width (cm):</label>
-            <input type="number" id="width" placeholder="Enter width" min="0" required>
-        </div>
-        <div class="form-group">
-        <label for="origin">Origin State:</label>
-        <select id="origin" name="origin" required>
-            <option value="" disabled selected>Select Origin</option>
-            <option value="AC">AC</option>
-            <option value="AL">AL</option>
-            <option value="AM">AM</option>
-            <option value="AP">AP</option>
-            <option value="BA">BA</option>
-            <option value="CE">CE</option>
-            <option value="DF">DF</option>
-            <option value="ES">ES</option>
-            <option value="GO">GO</option>
-            <option value="MA">MA</option>
-            <option value="MG">MG</option>
-            <option value="MS">MS</option>
-            <option value="MT">MT</option>
-            <option value="PA">PA</option>
-            <option value="PB">PB</option>
-            <option value="PE">PE</option>
-            <option value="PI">PI</option>
-            <option value="PR">PR</option>
-            <option value="RJ">RJ</option>
-            <option value="RN">RN</option>
-            <option value="RO">RO</option>
-            <option value="RR">RR</option>
-            <option value="RS">RS</option>
-            <option value="SC">SC</option>
-            <option value="SE">SE</option>
-            <option value="SP">SP</option>
-            <option value="TO">TO</option>
-        </select>
+  <div class="container">
+    <h1>Shipping Cost Calculator</h1>
+    <div class="form-group">
+      <label for="product_cost">Product Cost (USD):</label>
+      <input type="number" id="product_cost" placeholder="Enter product cost" min="0" required>
     </div>
     <div class="form-group">
-        <label for="destination">Destination State:</label>
-        <select id="destination" name="destination" required>
-            <option value="" disabled selected>Select Destination</option>
-            <option value="AC">AC</option>
-            <option value="AL">AL</option>
-            <option value="AM">AM</option>
-            <option value="AP">AP</option>
-            <option value="BA">BA</option>
-            <option value="CE">CE</option>
-            <option value="DF">DF</option>
-            <option value="ES">ES</option>
-            <option value="GO">GO</option>
-            <option value="MA">MA</option>
-            <option value="MG">MG</option>
-            <option value="MS">MS</option>
-            <option value="MT">MT</option>
-            <option value="PA">PA</option>
-            <option value="PB">PB</option>
-            <option value="PE">PE</option>
-            <option value="PI">PI</option>
-            <option value="PR">PR</option>
-            <option value="RJ">RJ</option>
-            <option value="RN">RN</option>
-            <option value="RO">RO</option>
-            <option value="RR">RR</option>
-            <option value="RS">RS</option>
-            <option value="SC">SC</option>
-            <option value="SE">SE</option>
-            <option value="SP">SP</option>
-            <option value="TO">TO</option>
-        </select>
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" placeholder="Enter weight" min="0" required>
     </div>
-        <button class="btn" onclick="calculateTotalCost()">Calculate</button>
-        <div id="result" class="result"></div>
+    <div class="form-group">
+      <label for="height">Height (cm):</label>
+      <input type="number" id="height" placeholder="Enter height" min="0" required>
+    </div>
+    <div class="form-group">
+      <label for="length">Length (cm):</label>
+      <input type="number" id="length" placeholder="Enter length" min="0" required>
+    </div>
+    <div class="form-group">
+      <label for="width">Width (cm):</label>
+      <input type="number" id="width" placeholder="Enter width" min="0" required>
     </div>
 
-    <script>
-        const dataMatrix = [
-  [17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 18.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 12.0, 7.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 18.0, 12.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 12.0, 7.0],
-  [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 20.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 12.0, 7.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.5, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0],
-  [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 7.0, 7.0, 18.0, 12.0, 7.0, 12.0, 7.0],
-  [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 7.0, 7.0, 12.0, 17.0, 7.0, 12.0, 7.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0],
-  [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 18.0, 7.0],
-  [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0],
-];
-        const origins = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'];
-        const destinations = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'];
+    <!--
+    <div class="form-group">
+      <label for="origin">Origin State:</label>
+      <select id="origin" name="origin" required>
+        <option value="" disabled selected>Select Origin</option>
+        <option value="AC">AC</option>
+        <option value="AL">AL</option>
+        <option value="AM">AM</option>
+        <option value="AP">AP</option>
+        <option value="BA">BA</option>
+        <option value="CE">CE</option>
+        <option value="DF">DF</option>
+        <option value="ES">ES</option>
+        <option value="GO">GO</option>
+        <option value="MA">MA</option>
+        <option value="MG">MG</option>
+        <option value="MS">MS</option>
+        <option value="MT">MT</option>
+        <option value="PA">PA</option>
+        <option value="PB">PB</option>
+        <option value="PE">PE</option>
+        <option value="PI">PI</option>
+        <option value="PR">PR</option>
+        <option value="RJ">RJ</option>
+        <option value="RN">RN</option>
+        <option value="RO">RO</option>
+        <option value="RR">RR</option>
+        <option value="RS">RS</option>
+        <option value="SC">SC</option>
+        <option value="SE">SE</option>
+        <option value="SP">SP</option>
+        <option value="TO">TO</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="destination">Destination State:</label>
+      <select id="destination" name="destination" required>
+        <option value="" disabled selected>Select Destination</option>
+        <option value="AC">AC</option>
+        <option value="AL">AL</option>
+        <option value="AM">AM</option>
+        <option value="AP">AP</option>
+        <option value="BA">BA</option>
+        <option value="CE">CE</option>
+        <option value="DF">DF</option>
+        <option value="ES">ES</option>
+        <option value="GO">GO</option>
+        <option value="MA">MA</option>
+        <option value="MG">MG</option>
+        <option value="MS">MS</option>
+        <option value="MT">MT</option>
+        <option value="PA">PA</option>
+        <option value="PB">PB</option>
+        <option value="PE">PE</option>
+        <option value="PI">PI</option>
+        <option value="PR">PR</option>
+        <option value="RJ">RJ</option>
+        <option value="RN">RN</option>
+        <option value="RO">RO</option>
+        <option value="RR">RR</option>
+        <option value="RS">RS</option>
+        <option value="SC">SC</option>
+        <option value="SE">SE</option>
+        <option value="SP">SP</option>
+        <option value="TO">TO</option>
+      </select>
+    </div>
+    -->
 
-        const dataLookup = {};
-        origins.forEach((origin, i) => {
-            destinations.forEach((destination, j) => {
-                dataLookup[`${origin}-${destination}`] = dataMatrix[i][j];
-            });
-        });
+    <button class="btn" onclick="calculateTotalCost()">Calculate</button>
+    <div id="result" class="result"></div>
+  </div>
 
-        function calculateShippingCost(weight, height, length, width) {
-            const volume = height * length * width / 1000000;
-            const volumeWeight = volume * 166.67;
-            return Math.max(weight, volumeWeight);
-        }
+  <script>
+    const dataMatrix = [
+      [17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 18.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 12.0, 7.0],
+      [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 17.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0],
+      [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 7.0, 7.0, 18.0, 12.0, 7.0, 12.0, 7.0],
+      [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 7.0, 7.0, 12.0, 17.0, 7.0, 12.0, 7.0],
+      [12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 12.0, 18.0, 12.0, 12.0],
+      [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 7.0, 7.0, 12.0, 12.0, 7.0, 18.0, 7.0],
+    ];
+    const origins = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'];
+    const destinations = ['AC', 'AL', 'AM', 'AP', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MG', 'MS', 'MT', 'PA', 'PB', 'PE', 'PI', 'PR', 'RJ', 'RN', 'RO', 'RR', 'RS', 'SC', 'SE', 'SP', 'TO'];
 
-        function calculateTotalCost() {
-            const productCost = parseFloat(document.getElementById('product_cost').value);
-            const weight = parseFloat(document.getElementById('weight').value);
-            const height = parseFloat(document.getElementById('height').value);
-            const length = parseFloat(document.getElementById('length').value);
-            const width = parseFloat(document.getElementById('width').value);
-            const origin = document.getElementById('origin').value;
-            const destination = document.getElementById('destination').value;
+    const dataLookup = {};
+    origins.forEach((origin, i) => {
+      destinations.forEach((destination, j) => {
+        dataLookup[`${origin}-${destination}`] = dataMatrix[i][j];
+      });
+    });
 
-            if (isNaN(productCost) || isNaN(weight) || isNaN(height) || isNaN(length) || isNaN(width) || !origin || !destination) {
-                document.getElementById('result').innerText = "Please fill all fields correctly.";
-                return;
-            }
+    function calculateShippingCost(weight, height, length, width) {
+      const volume = height * length * width / 1000000;
+      const volumeWeight = volume * 166.67;
+      return Math.max(weight, volumeWeight);
+    }
 
-            const realWeight = calculateShippingCost(weight, height, length, width);
-            const value = dataLookup[`${origin}-${destination}`] / 100 || 0;
-            const freteIntl = realWeight * 4.5;
-            const manuseio = realWeight * 1.3;
-            const freteNtl = 3.73;
-            const freteTotal = freteIntl + manuseio; //+ freteNtl
-            const impostoImportacao = (freteTotal + productCost) * 0.6;
-            const icms = (impostoImportacao + freteTotal) * value;
-            const impostoTotal = impostoImportacao; //+ icms
-            const custoTotal = freteTotal + impostoTotal;
-            const custoTotalRS = custoTotal * 6.1;
+    function calculateTotalCost() {
+      const productCost = parseFloat(document.getElementById('product_cost').value);
+      const weight = parseFloat(document.getElementById('weight').value);
+      const height = parseFloat(document.getElementById('height').value);
+      const length = parseFloat(document.getElementById('length').value);
+      const width = parseFloat(document.getElementById('width').value);
+      
+      // Commenting out origin and destination retrieval:
+      // const origin = document.getElementById('origin').value;
+      // const destination = document.getElementById('destination').value;
 
-            document.getElementById('result').innerHTML = `
-                Total Cost: $${custoTotal.toFixed(2)}<br>
-                Total Cost (RS): R$${custoTotalRS.toFixed(2)}
-            `}
-    </script>
+      // Also, commenting out validation related to origin/destination:
+      if (isNaN(productCost) || isNaN(weight) || isNaN(height) || isNaN(length) || isNaN(width) 
+          /*|| !origin || !destination*/) {
+        document.getElementById('result').innerText = "Please fill all fields correctly.";
+        return;
+      }
+
+      const realWeight = calculateShippingCost(weight, height, length, width);
+      
+      // Commenting out usage of dataLookup and state values:
+      // const value = dataLookup[`${origin}-${destination}`] / 100 || 0;
+      
+      const freteIntl = realWeight * 4.5;
+      const manuseio = realWeight * 1.3;
+      const freteNtl = 3.73;
+      const freteTotal = freteIntl + manuseio; //+ freteNtl if needed
+      const impostoImportacao = (freteTotal + productCost) * 0.6;
+      // const icms = (impostoImportacao + freteTotal) * value;
+      const impostoTotal = impostoImportacao; //+ icms if needed
+      const custoTotal = freteTotal + impostoTotal;
+      const custoTotalRS = custoTotal * 6.1;
+
+      document.getElementById('result').innerHTML = `
+        Total Cost: $${custoTotal.toFixed(2)}<br>
+        Total Cost (R$): R$${custoTotalRS.toFixed(2)}
+      `;
+    }
+  </script>
 </body>
 </html>
-
