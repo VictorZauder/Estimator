@@ -222,10 +222,10 @@
             const freteIntl = realWeight * 4.5;
             const manuseio = realWeight * 1.3;
             const freteNtl = 3.73;
-            const freteTotal = freteNtl + freteIntl + manuseio;
+            const freteTotal = freteIntl + manuseio; //+ freteNtl
             const impostoImportacao = (freteTotal + productCost) * 0.6;
             const icms = (impostoImportacao + freteTotal) * value;
-            const impostoTotal = impostoImportacao + icms;
+            const impostoTotal = impostoImportacao; //+ icms
             const custoTotal = freteTotal + impostoTotal;
 
             document.getElementById('result').innerText = `Total Cost: $${custoTotal.toFixed(2)}`;
