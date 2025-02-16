@@ -227,9 +227,12 @@
             const icms = (impostoImportacao + freteTotal) * value;
             const impostoTotal = impostoImportacao; //+ icms
             const custoTotal = freteTotal + impostoTotal;
+            const custoTotalRS = custoTotal * 6.1;
 
-            document.getElementById('result').innerText = `Total Cost: $${custoTotal.toFixed(2)}`;
-        }
+            document.getElementById('result').innerHTML = `
+                Total Cost: $${custoTotal.toFixed(2)}<br>
+                Total Cost (RS): R$${custoTotalRS.toFixed(2)}
+            `}
     </script>
 </body>
 </html>
